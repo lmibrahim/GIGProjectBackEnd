@@ -22,5 +22,21 @@ shows.get("/diyshows/:id", (req, res) => {
   });
 });
 
+shows.post("/diyshows", (req, res) => {
+  let query =
+    "INSERT INTO diyshows (title, start, description, address, diy) VALUES ($1::varchar, $2::timestamp, $3::text, $4::text, $5::boolean)";
+  pool
+    .query(query, [
+      req.body.title,
+      req.body.start,
+      req.body.description,
+      req.body.address,
+      true,
+    ])
+    .then((response) => {
+      res.json(req.body);
+    });
+});
+
 // export routes for use in server.js
 module.exports = shows;
