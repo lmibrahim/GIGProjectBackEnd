@@ -15,8 +15,8 @@ shows.get("/diyshows", (req, res) => {
 });
 
 shows.get("/diyshows/:id", (req, res) => {
-  let id = req.params.id;
-  let query = `SELECT * FROM diyshows WHERE diyshows.id = ${id}`;
+  let showId = req.params.id;
+  let query = `SELECT * FROM diyshows WHERE diyshows.id = ${showId}`;
   pool.query(query).then((response) => {
     res.json(response.rows);
   });
