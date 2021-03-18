@@ -24,7 +24,7 @@ shows.get("/diyshows/:id", (req, res) => {
 
 shows.post("/diyshows", (req, res) => {
   let query =
-    "INSERT INTO diyshows (title, start, description, address, diy) VALUES ($1::varchar, $2::timestamp, $3::text, $4::text, $5::boolean)";
+    "INSERT INTO diyshows (title, start, description, address, diy, lat, lng) VALUES ($1::varchar, $2::timestamp, $3::text, $4::text, $5::boolean, $6::real, $7::real)";
   pool
     .query(query, [
       req.body.title,
@@ -32,6 +32,8 @@ shows.post("/diyshows", (req, res) => {
       req.body.description,
       req.body.address,
       true,
+      req.body.lat,
+      req.body.lng,
     ])
     .then((response) => {
       res.json(req.body);
