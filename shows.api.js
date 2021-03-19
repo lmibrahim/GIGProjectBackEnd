@@ -34,24 +34,21 @@ shows.post("/diyshows", (req, res) => {
       true,
       req.body.lat,
       req.body.lng,
-      false
+      false,
     ])
     .then((response) => {
       res.json(req.body);
     });
 });
 
-shows.put("/diyshows/:id", (req, res)=> {
-  console.log('got here');
+shows.put("/diyshows/:id", (req, res) => {
+  console.log("got here");
   let showId = req.params.id;
-  let query =
-  `UPDATE diyshows SET display=true WHERE diyshows.id = ${showId}`;
-  pool.query(query)
-  .then((response)=> {
-    res.json(req.body)
-  })
-}
-);
+  let query = `UPDATE diyshows SET display=true WHERE diyshows.id = ${showId}`;
+  pool.query(query).then((response) => {
+    res.json(req.body);
+  });
+});
 
 // export routes for use in server.js
 module.exports = shows;
