@@ -44,7 +44,7 @@ shows.post("/diyshows", (req, res) => {
 shows.put("/diyshows/:id", (req, res) => {
   console.log("got here");
   let showId = req.params.id;
-  let query = `UPDATE diyshows SET display=true WHERE diyshows.id = ${showId}`;
+  let query = `UPDATE diyshows SET diyshows.display=true WHERE diyshows.id = ${showId}`;
   pool.query(query).then((response) => {
     res.json(req.body);
   });

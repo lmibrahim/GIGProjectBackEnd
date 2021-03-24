@@ -4,6 +4,7 @@
 const express = require("express");
 //require the router object (and all the defined routes) to be used in this file
 const shows = require("./shows.api");
+const posts = require("./posts.api");
 
 //require the cors module
 const cors = require("cors");
@@ -18,6 +19,7 @@ app.use(cors());
 app.use(express.json());
 //use the router object (and all the defined routes)
 app.use("/", shows);
+app.use("/", posts);
 
 //define a port
 const port = 3000;
