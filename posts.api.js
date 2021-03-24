@@ -10,9 +10,15 @@ const pool = require("./connection");
 posts.post("/posts/:id", (req, res) => {
   let id = parseInt(req.params.id);
   let query =
-    "INSERT INTO posts (memo, poster, post, show_id) VALUES ($1::varchar, $2::varchar, $3::text, $4::smallint)";
+    "INSERT INTO posts (memo, poster, post, show_id, time_stamp) VALUES ($1::varchar, $2::varchar, $3::text, $4::smallint, $5::text)";
   pool
-    .query(query, [req.body.memo, req.body.poster, req.body.post, id])
+    .query(query, [
+      req.body.memo,
+      req.body.poster,
+      req.body.post,
+      id,
+      req.body.time_stamp,
+    ])
     .then((response) => {
       res.json(req.body);
     });
